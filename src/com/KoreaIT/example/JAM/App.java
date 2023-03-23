@@ -64,13 +64,9 @@ public class App {
 			return -1;
 		}
 
-		MemberController memberController = new MemberController();
-		memberController.setConn(conn);
-		memberController.setScanner(sc);
-
-		ArticleController articleController = new ArticleController();
-		articleController.setConn(conn);
-		articleController.setScanner(sc);
+		MemberController memberController = new MemberController(conn, sc);
+		
+		ArticleController articleController = new ArticleController(conn, sc);
 
 		if (cmd.equals("member join")) {
 			memberController.doJoin(cmd);

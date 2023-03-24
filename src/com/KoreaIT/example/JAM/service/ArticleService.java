@@ -4,8 +4,8 @@ import java.sql.Connection;
 import java.util.List;
 import java.util.Map;
 
-import com.KoreaIT.example.JAM.Article;
 import com.KoreaIT.example.JAM.dao.ArticleDao;
+import com.KoreaIT.example.JAM.dto.Article;
 
 public class ArticleService {
 

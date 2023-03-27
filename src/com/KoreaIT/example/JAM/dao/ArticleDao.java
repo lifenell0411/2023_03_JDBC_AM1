@@ -27,7 +27,7 @@ public class ArticleDao {
 		return DBUtil.insert(Container.conn, sql);
 	}
 
-	public Map<String, Object> getArticleById(int id) {
+	public Article getArticleById(int id) {
 		SecSql sql = new SecSql();
 		sql.append("SELECT A.*, M.name AS extra__writer");
 		sql.append("FROM article AS A");
@@ -35,7 +35,13 @@ public class ArticleDao {
 		sql.append("ON A.memberId = M.id");
 		sql.append("WHERE A.id = ?", id);
 
-		return DBUtil.selectRow(Container.conn, sql);
+		Map<String, Object> articleMap = DBUtil.selectRow(Container.conn, sql);
+
+		if (articleMap.isEmpty()) {
+			return null;
+		}
+
+		return new Article(articleMap);
 	}
 
 	public int getArticlesCount(int id) {

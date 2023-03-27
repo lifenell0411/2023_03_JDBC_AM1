@@ -65,7 +65,7 @@ public class App {
 
 		MemberController memberController = Container.memberController;
 		ArticleController articleController = Container.articleController;
-		
+
 		if (cmd.equals("member logout")) {
 			memberController.logout(cmd);
 		} else if (cmd.equals("member login")) {
@@ -82,7 +82,7 @@ public class App {
 			articleController.doDelete(cmd);
 		} else if (cmd.startsWith("article modify ")) {
 			articleController.doModify(cmd);
-		} else if (cmd.equals("article list")) {
+		} else if (cmd.startsWith("article list")) {
 			articleController.showList(cmd);
 		} else {
 			System.out.println("존재하지 않는 명령어입니다");

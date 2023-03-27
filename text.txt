@@ -24,6 +24,8 @@ CREATE TABLE `member`(
 
 ALTER TABLE article ADD COLUMN memberId INT(10) UNSIGNED NOT NULL AFTER updateDate;
 
+ALTER TABLE article ADD COLUMN hit INT(10) UNSIGNED NOT NULL AFTER `body`
+
 # `member` 테스트데이터 생성
 INSERT INTO `member`
 SET regDate = NOW(),
@@ -44,8 +46,33 @@ INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 memberId = 1,
-title = CONCAT('제목 ',RAND()),
-`body` = CONCAT('내용 ',RAND());
+title = '제목 1',
+`body` = '내용 1',
+hit = 5;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 1,
+title = '제목 2',
+`body` = '내용 2',
+hit = 10;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+title = '제목 3',
+`body` = '내용 3',
+hit = 15;
+
+INSERT INTO article
+SET regDate = NOW(),
+updateDate = NOW(),
+memberId = 2,
+title = '제목 4',
+`body` = '내용 4',
+hit = 20;
 
 SELECT * 
 FROM article;
